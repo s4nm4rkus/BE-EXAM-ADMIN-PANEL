@@ -13,51 +13,70 @@ class EmployeeController extends Controller
     {
         $employees = Employee::with('factory')->paginate(10);
         $factories = Factory::all();
-        $employee  = null;
+        $employee = null;
 
-        $tab = request()->query('tab');
-        $id  = request()->query('id');
-
-        if (in_array($tab, ['edit', 'show']) && $id) {
-            $employee = Employee::with('factory')->findOrFail($id);
+        if (
+            request()->query('tab') === 'show' &&
+            request()->filled('id')
+        ) {
+            $employee = Employee::with('factory')
+                ->findOrFail(request('id'));
         }
 
-        return view('employees.index', compact('employees', 'factories', 'employee'));
+        return view('employees.index', compact(
+            'employees',
+            'factories',
+            'employee'
+        ));
     }
 
     public function create()
     {
-        return redirect()->route('employees.index', ['tab' => 'create']);
+        return redirect()->route('employees.index');
     }
 
     public function store(StoreEmployeeRequest $request)
     {
         Employee::create($request->validated());
-        return redirect()->route('employees.index')
-                         ->with('success', 'Employee created successfully.');
+
+        return redirect()
+            ->route('employees.index')
+            ->with('success', 'Employee created successfully.');
     }
 
     public function show(Employee $employee)
     {
-        return redirect()->route('employees.index', ['tab' => 'show', 'id' => $employee->id]);
+        return redirect()->route('employees.index', [
+            'tab' => 'show',
+            'id'  => $employee->id,
+        ]);
     }
 
     public function edit(Employee $employee)
     {
-        return redirect()->route('employees.index', ['tab' => 'edit', 'id' => $employee->id]);
+        return redirect()->route('employees.index', [
+            'tab' => 'edit',
+            'id'  => $employee->id,
+        ]);
     }
 
-    public function update(UpdateEmployeeRequest $request, Employee $employee)
-    {
+    public function update(
+        UpdateEmployeeRequest $request,
+        Employee $employee
+    ) {
         $employee->update($request->validated());
-        return redirect()->route('employees.index')
-                         ->with('success', 'Employee updated successfully.');
+
+        return redirect()
+            ->route('employees.index')
+            ->with('success', 'Employee updated successfully.');
     }
 
     public function destroy(Employee $employee)
     {
         $employee->delete();
-        return redirect()->route('employees.index')
-                         ->with('success', 'Employee deleted successfully.');
+
+        return redirect()
+            ->route('employees.index')
+            ->with('success', 'Employee deleted successfully.');
     }
 }
