@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\FactoryController;
-use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\Admin\FactoryController;
+use App\Http\Controllers\Admin\EmployeeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {

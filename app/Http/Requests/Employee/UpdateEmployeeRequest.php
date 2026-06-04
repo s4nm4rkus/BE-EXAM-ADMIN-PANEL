@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Employee;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreEmployeeRequest extends FormRequest
+class UpdateEmployeeRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -21,5 +21,6 @@ class StoreEmployeeRequest extends FormRequest
             'phone'      => 'nullable|string|max:50',
         ];
     }
+
 
 }

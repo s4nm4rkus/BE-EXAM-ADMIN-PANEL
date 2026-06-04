@@ -1,60 +1,58 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Factory;
-use App\Http\Requests\StoreFactoryRequest;
-use App\Http\Requests\UpdateFactoryRequest;
+use App\Http\Requests\Factory\StoreFactoryRequest;
+use App\Http\Requests\Factory\UpdateFactoryRequest;
 
 class FactoryController extends Controller
 {
     public function index()
     {
         $factories = Factory::withCount('employees')->paginate(10);
-        $factory   = null;
 
-        $tab = request()->query('tab');
-        $id  = request()->query('id');
-
-        if ($tab === 'show' && $id) {
-            $factory = Factory::with('employees')->findOrFail($id);
-        }
-
-        return view('factories.index', compact('factories', 'factory'));
+        return view('factories.index', compact('factories'));
     }
 
     public function create()
     {
-        return redirect()->route('factories.index');
+        return view('factories.create');
     }
 
     public function store(StoreFactoryRequest $request)
     {
         Factory::create($request->validated());
+
         return redirect()->route('factories.index')
                          ->with('success', 'Factory created successfully.');
     }
 
     public function show(Factory $factory)
     {
-        return redirect()->route('factories.index', ['tab' => 'show', 'id' => $factory->id]);
+        $factory->load('employees');
+
+        return view('factories.show', compact('factory'));
     }
 
     public function edit(Factory $factory)
     {
-        return redirect()->route('factories.index', ['tab' => 'show', 'id' => $factory->id]);
+        return view('factories.edit', compact('factory'));
     }
 
     public function update(UpdateFactoryRequest $request, Factory $factory)
     {
         $factory->update($request->validated());
-        return redirect()->route('factories.index')
+
+        return redirect()->route('factories.show', $factory)
                          ->with('success', 'Factory updated successfully.');
     }
 
     public function destroy(Factory $factory)
     {
         $factory->delete();
+
         return redirect()->route('factories.index')
                          ->with('success', 'Factory deleted successfully.');
     }
