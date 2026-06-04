@@ -45,10 +45,17 @@
                 </div>
 
                 <div>
-                    <a href="{{ route('employees.edit', $employee) }}"
+                    <form action="{{ route('employees.edit', $employee) }}" method="POST">
+                        @csrf
+                        @method('GET')
+                        <x-primary-button>
+                            Edit Employee
+                        </x-primary-button>
+                    </form>
+                    {{-- <a href="{{ route('employees.edit', $employee) }}"
                         class="px-5 py-2 text-sm font-medium text-indigo-600 bg-indigo-50 rounded-lg hover:bg-indigo-100 inline-block">
                         Edit Employee
-                    </a>
+                    </a> --}}
                 </div>
 
             </div>

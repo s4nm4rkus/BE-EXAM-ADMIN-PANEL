@@ -42,10 +42,13 @@
 
                 {{-- Edit button --}}
                 <div>
-                    <a href="{{ route('factories.edit', $factory) }}"
-                        class="px-5 py-2 text-sm font-medium text-indigo-600 bg-indigo-50 rounded-lg hover:bg-indigo-100 inline-block">
-                        Edit Factory
-                    </a>
+                    <form action="{{ route('factories.edit', $factory) }}" method="POST">
+                        @csrf
+                        @method('GET')
+                        <x-primary-button>
+                            Edit Factory
+                        </x-primary-button>
+                    </form>
                 </div>
 
                 {{-- Employees under this factory --}}

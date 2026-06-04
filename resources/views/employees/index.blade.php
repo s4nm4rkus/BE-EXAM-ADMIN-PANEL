@@ -53,11 +53,11 @@
                                     <div class="flex gap-2 justify-end">
                                         <a href="{{ route('employees.show', $item) }}"
                                             class="px-3 py-1.5 text-xs font-medium text-gray-600 bg-gray-100 rounded-md hover:bg-gray-200">
-                                            View
+                                            <x-icon.eye />
                                         </a>
                                         <a href="{{ route('employees.edit', $item) }}"
                                             class="px-3 py-1.5 text-xs font-medium text-indigo-600 bg-indigo-50 rounded-md hover:bg-indigo-100">
-                                            Edit
+                                            <x-icon.pencil />
                                         </a>
                                         <form action="{{ route('employees.destroy', $item) }}" method="POST"
                                             onsubmit="return confirm('Delete this employee?')">
@@ -65,7 +65,7 @@
                                             @method('DELETE')
                                             <button type="submit"
                                                 class="px-3 py-1.5 text-xs font-medium text-red-600 bg-red-50 rounded-md hover:bg-red-100">
-                                                Delete
+                                                <x-icon.trash />
                                             </button>
                                         </form>
                                     </div>
