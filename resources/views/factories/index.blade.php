@@ -29,7 +29,7 @@
             <div class="p-6">
                 <table class="w-full text-sm">
                     <thead>
-                        <tr>
+                        <tr class="border-b border-gray-100">
                             <th class="text-left py-3 px-3 text-xs font-medium text-gray-500 uppercase tracking-wide">
                                 Factory Name</th>
                             <th class="text-left py-3 px-3 text-xs font-medium text-gray-500 uppercase tracking-wide">

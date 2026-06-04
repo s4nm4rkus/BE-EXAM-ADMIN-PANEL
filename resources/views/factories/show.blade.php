@@ -20,7 +20,6 @@
 
             <div class="p-6 space-y-6">
 
-                {{-- Factory Info --}}
                 <div class="grid grid-cols-2 gap-4">
                     <div class="bg-gray-50 rounded-lg p-4">
                         <p class="text-xs font-medium text-gray-400 uppercase tracking-wide mb-1">Factory Name</p>
@@ -40,7 +39,6 @@
                     </div>
                 </div>
 
-                {{-- Edit button --}}
                 <div>
                     <form action="{{ route('factories.edit', $factory) }}" method="POST">
                         @csrf
@@ -51,7 +49,6 @@
                     </form>
                 </div>
 
-                {{-- Employees under this factory --}}
                 <div>
                     <div class="flex justify-between items-center mb-3">
                         <h4 class="text-sm font-semibold text-gray-700 uppercase tracking-wide">Employees</h4>

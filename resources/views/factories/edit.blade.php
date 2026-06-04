@@ -23,39 +23,43 @@
                     @csrf
                     @method('PUT')
 
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Factory Name <span
-                                class="text-red-500">*</span></label>
-                        <input type="text" name="factory_name"
-                            value="{{ old('factory_name', $factory->factory_name) }}"
-                            class="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500
-                                {{ $errors->has('factory_name') ? 'border-red-400' : 'border-gray-300' }}">
-                        @error('factory_name')
-                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-                        @enderror
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Factory Name <span
+                                    class="text-red-500">*</span></label>
+                            <input type="text" name="factory_name"
+                                value="{{ old('factory_name', $factory->factory_name) }}"
+                                class="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500
+                                    {{ $errors->has('factory_name') ? 'border-red-400' : 'border-gray-300' }}">
+                            @error('factory_name')
+                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Location <span
+                                    class="text-red-500">*</span></label>
+                            <input type="text" name="location" value="{{ old('location', $factory->location) }}"
+                                class="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500
+                                    {{ $errors->has('location') ? 'border-red-400' : 'border-gray-300' }}">
+                            @error('location')
+                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
                     </div>
 
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Location <span
-                                class="text-red-500">*</span></label>
-                        <input type="text" name="location" value="{{ old('location', $factory->location) }}"
-                            class="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500
-                                {{ $errors->has('location') ? 'border-red-400' : 'border-gray-300' }}">
-                        @error('location')
-                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-                        @enderror
-                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                            <input type="email" name="email" value="{{ old('email', $factory->email) }}"
+                                class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        </div>
 
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                        <input type="email" name="email" value="{{ old('email', $factory->email) }}"
-                            class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                    </div>
-
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Website</label>
-                        <input type="url" name="website" value="{{ old('website', $factory->website) }}"
-                            class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Website</label>
+                            <input type="url" name="website" value="{{ old('website', $factory->website) }}"
+                                class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        </div>
                     </div>
 
                     <div class="flex gap-3 pt-2">

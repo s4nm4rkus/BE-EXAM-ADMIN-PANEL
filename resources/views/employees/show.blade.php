@@ -52,10 +52,6 @@
                             Edit Employee
                         </x-primary-button>
                     </form>
-                    {{-- <a href="{{ route('employees.edit', $employee) }}"
-                        class="px-5 py-2 text-sm font-medium text-indigo-600 bg-indigo-50 rounded-lg hover:bg-indigo-100 inline-block">
-                        Edit Employee
-                    </a> --}}
                 </div>
 
             </div>
